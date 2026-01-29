@@ -9,7 +9,7 @@ const orbitron = Orbitron({
 })
 
 export const metadata: Metadata = {
-  title: 'Rahul R — Co-Founder & CTO | Zapsters',
+  title: 'Rahul R',
   description: 'UI/UX Architect • Full Stack Engineer',
 }
 
