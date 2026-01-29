@@ -10,7 +10,7 @@ export function BentoLogo() {
     return (
         <HardwareCapsuleStatCard
             variant="white"
-            className={cn(bentoBase, 'relative overflow-hidden')}
+            className={cn(bentoBase, 'relative overflow-hidden h-[120px] md:h-full')}
             noPadding
         >
             {/* Full Background Image with Static X + Y Offset */}

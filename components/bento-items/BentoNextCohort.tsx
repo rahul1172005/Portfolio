@@ -10,7 +10,7 @@ export function BentoNextCohort() {
     return (
         <HardwareCapsuleStatCard
             variant="black"
-            className={cn(bentoBase, 'relative overflow-hidden')}
+            className={cn(bentoBase, 'relative overflow-hidden h-[80px] md:h-full')}
             noPadding
         >
             {/* Full Background Image with Static X + Y Offset */}
@@ -31,7 +31,7 @@ export function BentoNextCohort() {
 
             {/* APPLY NOW CTA */}
             <div className="relative z-10 flex items-center justify-center h-full">
-                <h3 className="text-4xl font-black uppercase tracking-tight text-white">
+                <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white">
                     APPLY NOW
                 </h3>
             </div>

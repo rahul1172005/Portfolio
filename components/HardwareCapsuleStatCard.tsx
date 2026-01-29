@@ -51,8 +51,8 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
         <div
             style={style}
             className={cn(
-                "relative flex flex-col justify-center rounded-[60px] transition-all duration-500 group overflow-hidden h-full",
-                !noPadding && "p-6 md:p-10",
+                "relative flex flex-col justify-center rounded-[32px] md:rounded-[60px] transition-all duration-500 group overflow-hidden h-full",
+                !noPadding && "p-5 md:p-10",
                 getVariantStyles(),
                 className
             )}
@@ -74,7 +74,7 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
                 {children ? (
                     children
                 ) : (
-                    <div className="space-y-4">
+                    <div className="space-y-3 md:space-y-4">
                         <div className="flex justify-between items-start">
 
                             {/* VALUE — BLACK ON HOVER (IMPACT ONLY) */}
@@ -82,7 +82,7 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
                                 <div
                                     className={cn(
                                         `
-                                        text-6xl md:text-7xl font-black tracking-tighter leading-none uppercase
+                                        text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-none uppercase
                                         opacity-0 translate-y-6
                                         group-hover:opacity-100 group-hover:translate-y-0
                                         transition-all duration-500 ease-out
@@ -96,10 +96,10 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
 
                             {Icon && (
                                 <div className={cn(
-                                    "w-16 h-16 rounded-full border-4 flex items-center justify-center transition-transform group-hover:scale-110 duration-500",
+                                    "w-12 h-12 md:w-16 md:h-16 rounded-full border-4 flex items-center justify-center transition-transform group-hover:scale-110 duration-500",
                                     variant === 'lime' ? "border-black" : "border-[#d9ff00]"
                                 )}>
-                                    <Icon size={32} />
+                                    <Icon className="w-6 h-6 md:w-8 md:h-8" />
                                 </div>
                             )}
                         </div>
@@ -110,7 +110,7 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
                                 <div
                                     className={cn(
                                         `
-                                        text-xl md:text-2xl font-black uppercase tracking-tight leading-none
+                                        text-lg md:text-2xl font-black uppercase tracking-tight leading-none
                                         opacity-0 translate-y-4
                                         group-hover:opacity-100 group-hover:translate-y-0
                                         transition-all duration-500 ease-out delay-75
@@ -126,7 +126,7 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
                                 <div
                                     className={cn(
                                         `
-                                        text-sm font-bold uppercase tracking-widest
+                                        text-xs md:text-sm font-bold uppercase tracking-widest
                                         opacity-0 translate-y-3
                                         group-hover:opacity-100 group-hover:translate-y-0
                                         transition-all duration-500 ease-out delay-150

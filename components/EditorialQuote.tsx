@@ -15,7 +15,7 @@ export const EditorialQuote = () => {
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 1000px"
-                    className="object-contain object-center opacity-50 md:opacity-100" // Lower opacity on mobile for readability
+                    className="object-contain object-center md:opacity-100" // Full opacity on all devices
                     style={{
                         transform: 'translate(0px, -6px) scale(2)', // ✅ X, Y, Zoom ONLY
                         willChange: 'transform'

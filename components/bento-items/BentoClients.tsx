@@ -10,7 +10,7 @@ export function BentoClients() {
     return (
         <HardwareCapsuleStatCard
             variant="lime"
-            className={cn(bentoBase, "overflow-hidden relative")}
+            className={cn(bentoBase, "overflow-hidden relative h-[120px] md:h-full")}
             noPadding
         >
             {/* Bento4 Accent (RIGHT-ALIGNED, LETTERS VISIBLE) */}
@@ -25,14 +25,14 @@ export function BentoClients() {
                 />
             </div>
 
-            <div className="flex justify-between items-start w-full relative gap-6 p-6 md:p-12">
+            <div className="flex justify-between items-start w-full relative gap-6 p-5 md:p-12">
                 {/* TEXT BLOCK */}
                 <div className="flex flex-col gap-2 relative z-10 max-w-[70%]">
-                    <h3 className="text-4xl md:text-6xl font-black text-black leading-none tracking-tight uppercase">
+                    <h3 className="text-3xl md:text-6xl font-black text-black leading-none tracking-tight uppercase">
                         10+<br />
                         CLIENTS
                     </h3>
-                    <p className="text-sm md:text-xl font-bold text-black/80 uppercase tracking-widest">
+                    <p className="text-xs sm:text-sm md:text-xl font-bold text-black/80 uppercase tracking-widest">
                         Successfully Delivered Projects
                     </p>
                 </div>

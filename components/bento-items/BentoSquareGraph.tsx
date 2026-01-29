@@ -10,7 +10,7 @@ export function BentoSquareGraph() {
     return (
         <HardwareCapsuleStatCard
             variant="black"
-            className={cn(bentoBase, "overflow-hidden")}
+            className={cn(bentoBase, "overflow-hidden h-[120px] md:h-full")}
             noPadding
         >
             <div className="absolute inset-0 w-full h-full z-10 -m-px">

@@ -10,7 +10,7 @@ export function BentoTechStack() {
     return (
         <HardwareCapsuleStatCard
             variant="white"
-            className={cn(bentoBase, 'bg-gray-200 overflow-hidden relative')}
+            className={cn(bentoBase, 'bg-gray-200 overflow-hidden relative h-[240px] md:h-full')}
             noPadding
         >
             {/* BENTO3 IMAGE - SILHOUETTE */}

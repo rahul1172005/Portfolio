@@ -12,47 +12,47 @@ import { BentoNextCohort } from './bento-items/BentoNextCohort'
 
 export function BentoGrid() {
     return (
-        <section className="px-4 md:px-12 max-w-7xl mx-auto pt-16 pb-28 relative z-[100] overflow-hidden">
+        <section className="px-3 md:px-12 max-w-7xl mx-auto pt-16 pb-28 relative z-[100] overflow-hidden">
 
-            <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-4 gap-6 h-auto md:h-[1000px] relative z-[200]">
+            <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-4 gap-2 md:gap-6 h-auto md:h-[1000px] relative z-[200]">
 
                 {/* 1. TOP HERO */}
-                <div className="md:col-span-3 md:row-span-1">
+                <div className="col-span-2 md:col-span-3 md:row-span-1">
                     <BentoTopSkills />
                 </div>
 
                 {/* 2. TOP RIGHT SQUARE */}
-                <div className="md:col-span-1 md:row-span-1">
+                <div className="hidden md:block col-span-1 md:col-span-1 md:row-span-1">
                     <BentoSquareGraph />
                 </div>
 
                 {/* 3. TALL LEFT — CLEAN ABSTRACT (NO INNER BOXES) */}
-                <div className="md:col-span-2 md:row-span-2">
+                <div className="col-span-2 md:col-span-2 md:row-span-2">
                     <BentoTechStack />
                 </div>
 
                 {/* 4. MIDDLE RIGHT WIDE — CLIENTS + BENTO4 */}
-                <div className="md:col-span-2 md:row-span-1">
+                <div className="col-span-2 md:col-span-2 md:row-span-1">
                     <BentoClients />
                 </div>
 
                 {/* 5. BOTTOM MID WIDE — WORK WITH VIBE */}
-                <div className="md:col-span-2 md:row-span-1">
+                <div className="col-span-2 md:col-span-2 md:row-span-1">
                     <BentoWorkWithVibe />
                 </div>
 
                 {/* 6. BOTTOM SQUARE LOGO */}
-                <div className="md:col-span-1 md:row-span-1">
+                <div className="col-span-1 md:col-span-1 md:row-span-1">
                     <BentoLogo />
                 </div>
 
                 {/* 7. BOTTOM SQUARE LOCATION */}
-                <div className="md:col-span-1 md:row-span-1">
+                <div className="col-span-1 md:col-span-1 md:row-span-1">
                     <BentoLocation />
                 </div>
 
                 {/* 8. FINAL CARD */}
-                <div className="md:col-span-2 md:row-span-1">
+                <div className="col-span-2 md:col-span-2 md:row-span-1">
                     <BentoNextCohort />
                 </div>
 

@@ -10,12 +10,12 @@ export const SelectedWork = () => {
         <div className="px-6 md:px-12 max-w-7xl mx-auto">
             <div id="work" className="space-y-12">
                 <div className="flex justify-center items-baseline border-b border-black/5 pb-10">
-                    <h3 className="text-6xl md:text-8xl xl:text-9xl font-black tracking-tighter uppercase text-black text-center leading-none">
+                    <h3 className="text-5xl md:text-8xl xl:text-9xl font-black tracking-tighter uppercase text-black text-center leading-none">
                         My Work
                     </h3>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
                     {[
                         {
                             title: 'Zapsters',
@@ -92,11 +92,11 @@ export const SelectedWork = () => {
                                 <div className="absolute inset-0 bg-black/45 z-[1]" />
 
                                 {/* Foreground Content — CENTERED TEXT ONLY */}
-                                <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-center p-5">
-                                    <h4 className="text-4xl font-black uppercase tracking-tighter leading-none text-white">
+                                <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-center p-3 md:p-5">
+                                    <h4 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none text-white">
                                         {project.title}
                                     </h4>
-                                    <p className="text-sm font-bold uppercase tracking-widest mt-2 text-white/70">
+                                    <p className="text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-widest mt-2 text-white/70">
                                         {project.type}
                                     </p>
                                 </div>

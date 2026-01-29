@@ -10,7 +10,7 @@ export function BentoWorkWithVibe() {
     return (
         <HardwareCapsuleStatCard
             variant="black"
-            className={cn(bentoBase, 'overflow-hidden bg-black relative')}
+            className={cn(bentoBase, 'overflow-hidden bg-black relative h-[120px] md:h-full')}
             noPadding
         >
             {/* Background Image — FULL COVERAGE with Subtle Float */}

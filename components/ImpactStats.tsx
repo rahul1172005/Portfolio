@@ -9,12 +9,12 @@ export const ImpactStats = () => {
             <div id="impact" className="space-y-12">
 
                 <div className="flex justify-center items-baseline border-b border-black/5 pb-10">
-                    <h3 className="text-6xl md:text-8xl xl:text-9xl font-black tracking-tighter uppercase text-black text-center leading-none">
+                    <h3 className="text-5xl md:text-8xl xl:text-9xl font-black tracking-tighter uppercase text-black text-center leading-none">
                         Impact STATS
                     </h3>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-5 h-auto md:h-[600px]">
+                <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-3 md:gap-5 h-auto md:h-[600px]">
 
                     {/* PROJECTS */}
                     <HardwareCapsuleStatCard
@@ -28,7 +28,7 @@ export const ImpactStats = () => {
                             backgroundSize: '150%',          // 🔥 SCALE
                             backgroundPosition: '60% 40%',   // 🔥 X Y
                         }}
-                        className="md:col-span-2 text-black"
+                        className="col-span-2 text-black"
                     />
 
                     {/* USERS */}
@@ -79,22 +79,6 @@ export const ImpactStats = () => {
                         className="text-black "
                     />
 
-                    {/* RATING */}
-                    <HardwareCapsuleStatCard
-                        impactHover
-
-                        value="5.0"
-                        label="Rating"
-                        variant="white"
-                        style={{
-                            backgroundImage: "url('/rating.png')",
-                            backgroundRepeat: 'no-repeat',
-                            backgroundSize: '150%',
-                            backgroundPosition: '55% 45%',
-                        }}
-                        className="md:col-span-2 text-black"
-                    />
-
                     {/* RESPONSE */}
                     <HardwareCapsuleStatCard
                         impactHover
@@ -109,6 +93,22 @@ export const ImpactStats = () => {
                             backgroundPosition: '50% 35%',
                         }}
                         className="text-black"
+                    />
+
+                    {/* RATING */}
+                    <HardwareCapsuleStatCard
+                        impactHover
+
+                        value="5.0"
+                        label="Rating"
+                        variant="white"
+                        style={{
+                            backgroundImage: "url('/rating.png')",
+                            backgroundRepeat: 'no-repeat',
+                            backgroundSize: '150%',
+                            backgroundPosition: '55% 45%',
+                        }}
+                        className="col-span-2 text-black"
                     />
 
                 </div>
