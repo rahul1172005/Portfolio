@@ -7,7 +7,7 @@ import HardwareCapsuleStatCard from '@/components/HardwareCapsuleStatCard'
 
 export const IntroCards = () => {
     return (
-        <div className="px-4 md:px-12 max-w-7xl mx-auto mb-32 md:mb-60">
+        <div className="px-4 md:px-12 max-w-7xl mx-auto mb-12 md:mb-60">
             <div className="grid md:grid-cols-4 gap-3 md:gap-5 h-auto md:h-[400px]">
                 <div className="md:col-span-3">
                     <HardwareCapsuleStatCard variant="lime" className="h-full">
