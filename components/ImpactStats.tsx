@@ -1,9 +1,69 @@
 'use client'
 
-import React from 'react'
+import React, { useRef } from 'react'
 import HardwareCapsuleStatCard from '@/components/HardwareCapsuleStatCard'
 
 export const ImpactStats = () => {
+    const successAudioRef = useRef<HTMLAudioElement | null>(null)
+
+    const isMobile = typeof window !== 'undefined' && 'ontouchstart' in window
+
+    // 🔍 Check if ANY audio is currently playing on the page
+    const isAnyAudioPlaying = () => {
+        const audios = document.querySelectorAll('audio')
+        for (const audio of audios) {
+            if (!audio.paused && !audio.ended) {
+                return true
+            }
+        }
+        return false
+    }
+
+    const playSuccess = () => {
+        if (!successAudioRef.current) return
+
+        // ❌ If some other music is playing, DO NOTHING
+        if (isAnyAudioPlaying()) {
+            console.log('Another audio is already playing. Skipping SUCCESS play.')
+            return
+        }
+
+        successAudioRef.current.currentTime = 0
+        successAudioRef.current.play().catch(() => {
+            console.warn('Audio play blocked by browser')
+        })
+    }
+
+    const pauseSuccess = () => {
+        if (!successAudioRef.current) return
+        successAudioRef.current.pause()
+    }
+
+    // 🖥 Desktop
+    const handleClick = () => {
+        if (isMobile) return
+        playSuccess()
+    }
+
+    const handleDoubleClick = () => {
+        if (isMobile) return
+        pauseSuccess()
+    }
+
+    // 📱 Mobile — TRUE TOGGLE
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        e.preventDefault()   // 🚫 prevent ghost click
+        e.stopPropagation()
+
+        if (!successAudioRef.current) return
+
+        if (successAudioRef.current.paused) {
+            playSuccess()
+        } else {
+            pauseSuccess()
+        }
+    }
+
     return (
         <div className="px-6 md:px-12 max-w-7xl mx-auto mt-32 md:mt-60">
             <div id="impact" className="space-y-12">
@@ -25,8 +85,8 @@ export const ImpactStats = () => {
                         style={{
                             backgroundImage: "url('/projects.png')",
                             backgroundRepeat: 'no-repeat',
-                            backgroundSize: '150%',          // 🔥 SCALE
-                            backgroundPosition: '60% 40%',   // 🔥 X Y
+                            backgroundSize: '150%',
+                            backgroundPosition: '60% 40%',
                         }}
                         className="col-span-2 text-black"
                     />
@@ -34,7 +94,6 @@ export const ImpactStats = () => {
                     {/* USERS */}
                     <HardwareCapsuleStatCard
                         impactHover
-
                         value="10K+"
                         label="Users"
                         variant="white"
@@ -47,26 +106,53 @@ export const ImpactStats = () => {
                         className="text-black"
                     />
 
-                    {/* SUCCESS */}
+                    {/* SUCCESS — VIDEO + MOBILE SAFE TOGGLE */}
                     <HardwareCapsuleStatCard
-                        impactHover
-
-                        value="98%"
-                        label="Success"
                         variant="white"
-                        style={{
-                            backgroundImage: "url('/success.png')",
-                            backgroundRepeat: 'no-repeat',
-                            backgroundSize: '170%',
-                            backgroundPosition: '50% 30%',
-                        }}
-                        className="text-black"
-                    />
+                        noPadding
+                        className="text-black relative overflow-hidden"
+                    >
+                        {/* VIDEO BACKGROUND — YELLOW FILTER */}
+                        <video
+                            src="/video3.mp4"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="absolute inset-0 w-full h-full object-cover"
+                            style={{
+                                filter: `
+                                  sepia(100%)
+                                  hue-rotate(10deg)
+                                  saturate(3)
+                                  contrast(1.1)
+                                `,
+                                willChange: 'filter'
+                            }}
+                        />
+
+                        {/* TAP / CLICK CAPTURE LAYER */}
+                        <div
+                            className="absolute inset-0 z-20 cursor-pointer"
+                            onClick={handleClick}                 // 🖥 desktop only
+                            onDoubleClick={handleDoubleClick}     // 🖥 desktop only
+                            onTouchEnd={handleTouchEnd}           // 📱 mobile toggle
+                        />
+
+                        {/* OPTIONAL CONTENT LAYER */}
+                        <div className="relative z-10 flex flex-col h-full justify-center p-4 md:p-10" />
+
+                        {/* HIDDEN AUDIO */}
+                        <audio
+                            ref={successAudioRef}
+                            src="/success.mp3"
+                            preload="auto"
+                        />
+                    </HardwareCapsuleStatCard>
 
                     {/* COUNTRIES */}
                     <HardwareCapsuleStatCard
                         impactHover
-
                         value="2"
                         label="Countries"
                         variant="white"
@@ -82,7 +168,6 @@ export const ImpactStats = () => {
                     {/* RESPONSE */}
                     <HardwareCapsuleStatCard
                         impactHover
-
                         value="<24h"
                         label="Response"
                         variant="white"
@@ -98,7 +183,6 @@ export const ImpactStats = () => {
                     {/* RATING */}
                     <HardwareCapsuleStatCard
                         impactHover
-
                         value="5.0"
                         label="Rating"
                         variant="white"
