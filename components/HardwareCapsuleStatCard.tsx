@@ -52,7 +52,7 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
             style={style}
             className={cn(
                 "relative flex flex-col justify-center rounded-[32px] md:rounded-[60px] transition-all duration-500 group overflow-hidden h-full",
-                !noPadding && "p-5 md:p-10",
+                !noPadding && "p-4 md:p-10",
                 getVariantStyles(),
                 className
             )}
@@ -82,7 +82,7 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
                                 <div
                                     className={cn(
                                         `
-                                        text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-none uppercase
+                                        text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-none uppercase
                                         opacity-0 translate-y-6
                                         group-hover:opacity-100 group-hover:translate-y-0
                                         transition-all duration-500 ease-out
@@ -110,7 +110,7 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
                                 <div
                                     className={cn(
                                         `
-                                        text-lg md:text-2xl font-black uppercase tracking-tight leading-none
+                                        text-base md:text-2xl font-black uppercase tracking-tight leading-none
                                         opacity-0 translate-y-4
                                         group-hover:opacity-100 group-hover:translate-y-0
                                         transition-all duration-500 ease-out delay-75

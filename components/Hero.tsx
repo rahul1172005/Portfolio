@@ -16,7 +16,7 @@ export function Hero() {
     absolute left-1/2 top-[48%]
     -translate-x-1/2 -translate-y-1/2
     z-40
-    w-[85vw] md:w-[650px] xl:w-[850px]
+    w-[85%] md:w-[650px] xl:w-[850px]
   "
             >
                 <Image
@@ -44,7 +44,7 @@ export function Hero() {
     top-[50%] md:top-[42%]
     -translate-x-1/2 -translate-y-1/2
     z-30
-    w-[85vw] md:w-[740px] xl:w-[980px]
+    w-[85%] md:w-[740px] xl:w-[980px]
   "
             >
                 <Image
@@ -74,7 +74,7 @@ export function Hero() {
             <div className="pointer-events-none absolute inset-0 z-[58] rounded-[32px] md:rounded-[48px] shadow-[inset_0_0_0_32px_rgba(255,255,255,1)] md:shadow-[inset_0_0_0_64px_rgba(255,255,255,1)] blur-[24px] md:blur-[44px]" />
 
             {/* ================= OUTER HALO GLOW ================= */}
-            <div className="pointer-events-none absolute inset-[-12px] md:inset-[-24px] z-[57] rounded-[48px] md:rounded-[64px] shadow-[0_0_80px_rgba(255,255,255,0.85)] md:shadow-[0_0_180px_rgba(255,255,255,0.85)] blur-[30px] md:blur-[60px]" />
+            <div className="pointer-events-none absolute inset-0 md:inset-[-24px] z-[57] rounded-[48px] md:rounded-[64px] shadow-none md:shadow-[0_0_180px_rgba(255,255,255,0.85)] blur-none md:blur-[60px]" />
 
             {/* ================= DEEP WHITE FEATHER ================= */}
             <div className="pointer-events-none absolute inset-0 z-[56] rounded-[32px] md:rounded-[48px] shadow-[inset_0_0_200px_rgba(255,255,255,0.98)] md:shadow-[inset_0_0_520px_rgba(255,255,255,0.98)]" />

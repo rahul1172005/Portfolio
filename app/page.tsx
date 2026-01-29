@@ -12,7 +12,7 @@ import { ContactSection } from '@/components/ContactSection'
 
 export default function Home() {
     return (
-        <main className="min-h-screen bg-white text-black selection:bg-[#d9ff00] selection:text-black">
+        <main className="min-h-screen bg-white text-black selection:bg-[#d9ff00] selection:text-black overflow-x-hidden w-full">
 
             {/* HERO SECTION */}
             <Hero />

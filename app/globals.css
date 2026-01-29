@@ -25,6 +25,15 @@
     @apply border-border;
   }
 
+  html,
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative;
+    touch-action: pan-y;
+  }
+
   body {
     @apply bg-white text-foreground;
     font-family: var(--font-orbitron), -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;

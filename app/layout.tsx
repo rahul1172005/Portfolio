@@ -22,9 +22,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`smooth-scroll ${orbitron.variable}`}>
-      <body className="bg-white text-black antialiased selection:bg-red-500/10 overflow-x-hidden">
-        <Navbar />
-        {children}
+      <body className="bg-white text-black antialiased selection:bg-red-500/10 overflow-x-hidden w-full relative">
+        <div className="relative w-full overflow-x-hidden max-w-[100vw]">
+          <Navbar />
+          {children}
+        </div>
       </body>
     </html>
   )
