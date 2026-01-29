@@ -66,7 +66,7 @@ export function Navbar() {
               shadow-md
             "
                     >
-                        LET'S_TALK
+                        LET'S TALK
                     </a>
                 </div>
 

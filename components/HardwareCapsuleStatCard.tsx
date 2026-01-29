@@ -10,29 +10,29 @@ type HardwareCapsuleStatCardProps = {
     subLabel?: string;
     icon?: LucideIcon;
     className?: string;
+    style?: React.CSSProperties;
     children?: React.ReactNode;
 
     variant?: 'lime' | 'black' | 'outline' | 'white';
     noPadding?: boolean;
+
+    // ✅ Only for ImpactStats
+    impactHover?: boolean;
 };
 
-/**
- * EditorialStatCard
- * Strictly following the Cyber-Lime / Black Editorial aesthetic.
- * No metallic borders, no gradients, no 3D effects.
- */
 const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
     value,
     label,
     subLabel,
     icon: Icon,
     className,
+    style,
     children,
 
-    variant = 'lime', // Default to lime for that high-impact look
+    variant = 'lime',
     noPadding = false,
+    impactHover = false,
 }) => {
-    // Determine styles based on variant
     const getVariantStyles = () => {
         switch (variant) {
             case 'black':
@@ -49,6 +49,7 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
 
     return (
         <div
+            style={style}
             className={cn(
                 "relative flex flex-col justify-center rounded-[60px] transition-all duration-500 group overflow-hidden h-full",
                 !noPadding && "p-6 md:p-10",
@@ -56,18 +57,43 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
                 className
             )}
         >
-            {/* Minimal Content */}
+            {/* ================= BLUR OVERLAY — IMPACT ONLY ================= */}
+            {impactHover && (
+                <div
+                    className="
+                      absolute inset-0 z-0
+                      opacity-0 group-hover:opacity-100
+                      backdrop-blur-lg bg-white/70
+                      transition-all duration-500
+                    "
+                />
+            )}
+
+            {/* ================= CONTENT ================= */}
             <div className="relative z-10 flex flex-col h-full justify-center">
                 {children ? (
                     children
                 ) : (
                     <div className="space-y-4">
                         <div className="flex justify-between items-start">
+
+                            {/* VALUE — BLACK ON HOVER (IMPACT ONLY) */}
                             {value && (
-                                <div className="text-6xl md:text-7xl font-black tracking-tighter leading-none uppercase">
+                                <div
+                                    className={cn(
+                                        `
+                                        text-6xl md:text-7xl font-black tracking-tighter leading-none uppercase
+                                        opacity-0 translate-y-6
+                                        group-hover:opacity-100 group-hover:translate-y-0
+                                        transition-all duration-500 ease-out
+                                        `,
+                                        impactHover ? "text-black" : ""
+                                    )}
+                                >
                                     {value}
                                 </div>
                             )}
+
                             {Icon && (
                                 <div className={cn(
                                     "w-16 h-16 rounded-full border-4 flex items-center justify-center transition-transform group-hover:scale-110 duration-500",
@@ -78,17 +104,36 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
                             )}
                         </div>
 
+                        {/* LABEL + SUBLABEL — BLACK ON HOVER (IMPACT ONLY) */}
                         <div className="space-y-1">
                             {label && (
-                                <div className="text-xl md:text-2xl font-black uppercase tracking-tight leading-none">
+                                <div
+                                    className={cn(
+                                        `
+                                        text-xl md:text-2xl font-black uppercase tracking-tight leading-none
+                                        opacity-0 translate-y-4
+                                        group-hover:opacity-100 group-hover:translate-y-0
+                                        transition-all duration-500 ease-out delay-75
+                                        `,
+                                        impactHover ? "text-black" : ""
+                                    )}
+                                >
                                     {label}
                                 </div>
                             )}
+
                             {subLabel && (
-                                <div className={cn(
-                                    "text-sm font-bold uppercase tracking-widest opacity-60",
-                                    variant === 'lime' ? "text-black" : "text-white"
-                                )}>
+                                <div
+                                    className={cn(
+                                        `
+                                        text-sm font-bold uppercase tracking-widest
+                                        opacity-0 translate-y-3
+                                        group-hover:opacity-100 group-hover:translate-y-0
+                                        transition-all duration-500 ease-out delay-150
+                                        `,
+                                        impactHover ? "text-black" : ""
+                                    )}
+                                >
                                     {subLabel}
                                 </div>
                             )}
