@@ -1,0 +1,34 @@
+rules_version='2'
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Contact form submissions - allow anyone to write, but only authenticated users to read
+    match /contact-submissions/{submissionId} {
+      // Allow anyone to create a new submission
+      allow create: if request.resource.data.keys().hasAll(['fullName', 'email', 'projectType', 'budgetRange', 'projectDetails', 'submittedAt', 'status'])
+                    && request.resource.data.fullName is string
+                    && request.resource.data.email is string
+                    && request.resource.data.email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$')
+                    && request.resource.data.projectType is string
+                    && request.resource.data.budgetRange is string
+                    && request.resource.data.projectDetails is string
+                    && request.resource.data.status == 'new'
+                    && request.resource.data.fullName.size() > 0
+                    && request.resource.data.projectDetails.size() > 0;
+      
+      // Only authenticated users (you) can read submissions
+      allow read: if request.auth != null;
+      
+      // Only authenticated users (you) can update status
+      allow update: if request.auth != null;
+      
+      // Only authenticated users (you) can delete
+      allow delete: if request.auth != null;
+    }
+    
+    // Deny all other access by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
