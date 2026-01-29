@@ -18,6 +18,7 @@ type HardwareCapsuleStatCardProps = {
 
     // ✅ Only for ImpactStats
     impactHover?: boolean;
+    onClick?: () => void;
 };
 
 const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
@@ -32,6 +33,7 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
     variant = 'lime',
     noPadding = false,
     impactHover = false,
+    onClick,
 }) => {
     const getVariantStyles = () => {
         switch (variant) {
@@ -49,6 +51,7 @@ const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
 
     return (
         <div
+            onClick={onClick}
             style={style}
             className={cn(
                 "relative flex flex-col justify-center rounded-[32px] md:rounded-[60px] transition-all duration-500 group overflow-hidden h-full",

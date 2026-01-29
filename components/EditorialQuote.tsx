@@ -5,88 +5,62 @@ import Image from 'next/image'
 
 export const EditorialQuote = () => {
     return (
-        <div className="relative px-6 md:px-12 max-w-7xl mx-auto py-32 text-center overflow-hidden">
+        <div className="relative px-6 md:px-12 max-w-7xl mx-auto py-32 overflow-hidden">
 
             {/* Background Image — FULL IMAGE VISIBLE */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/quotes1.png"   // must be in public/
+                    src="/quotes1.png"
                     alt="Quote Background"
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 1000px"
-                    className="object-contain object-center md:opacity-100" // Full opacity on all devices
+                    className="object-contain object-center md:opacity-100"
                     style={{
-                        transform: 'translate(0px, -6px) scale(2)', // ✅ X, Y, Zoom ONLY
+                        transform: 'translate(0px, -70px) scale(1.8)',
                         willChange: 'transform'
                     }}
                 />
             </div>
 
-            {/* Quote Content */}
-            <blockquote className="relative z-10 mx-auto max-w-5xl">
-                <p className="text-4xl md:text-7xl font-black tracking-tighter leading-[0.95] text-black">
-                    “Wise men{' '}
-                    <span
-                        style={{
-                            background: 'linear-gradient(135deg, #9a9a9a, #5f5f5f, #c2c2c2, #4a4a4a)',
-                            WebkitBackgroundClip: 'text',
-                            backgroundClip: 'text',
-                            color: 'transparent',
-                        }}
-                    >
-                        speak
-                    </span>{' '}
-                    less, yet every{' '}
-                    <span
-                        style={{
-                            background: 'linear-gradient(135deg, #9a9a9a, #5f5f5f, #c2c2c2, #4a4a4a)',
-                            WebkitBackgroundClip: 'text',
-                            backgroundClip: 'text',
-                            color: 'transparent',
-                        }}
-                    >
-                        word
-                    </span>{' '}
-                    <span
-                        style={{
-                            background: 'linear-gradient(135deg, #9a9a9a, #5f5f5f, #c2c2c2, #4a4a4a)',
-                            WebkitBackgroundClip: 'text',
-                            backgroundClip: 'text',
-                            color: 'transparent',
-                        }}
-                    >
-                        cuts
-                    </span>{' '}
-                    through{' '}
-                    <span
-                        style={{
-                            background: 'linear-gradient(135deg, #9a9a9a, #5f5f5f, #c2c2c2, #4a4a4a)',
-                            WebkitBackgroundClip: 'text',
-                            backgroundClip: 'text',
-                            color: 'transparent',
-                        }}
-                    >
-                        the noise
-                    </span>.”
-                </p>
+            {/* Spacer so marquee is BELOW image */}
+            <div className="relative z-10 mt-[55vh] md:mt-[60vh] overflow-hidden">
 
-                <footer className="mt-8">
-                    <p className="text-sm font-bold uppercase tracking-[0.3em]">
-                        —{' '}
-                        <span
-                            style={{
-                                background: 'linear-gradient(135deg, #9a9a9a, #5f5f5f, #c2c2c2, #4a4a4a)',
-                                WebkitBackgroundClip: 'text',
-                                backgroundClip: 'text',
-                                color: 'transparent',
-                            }}
-                        >
-                            Rahul R
-                        </span>
-                    </p>
-                </footer>
-            </blockquote>
+                {/* MARQUEE WRAPPER */}
+                <div className="relative w-full overflow-hidden">
+                    <div className="flex w-max animate-marquee gap-16">
+
+                        {/* DUPLICATED CONTENT FOR SEAMLESS LOOP */}
+                        {[1, 2].map((i) => (
+                            <p
+                                key={i}
+                                className="text-2xl md:text-5xl font-black tracking-tighter leading-[0.95] whitespace-nowrap text-black-500"
+                            >
+                                Wise men speak less, yet every word cuts through the noise — Rahul R
+                            </p>
+                        ))}
+
+                    </div>
+                </div>
+
+            </div>
+
+            {/* LOCAL STYLES */}
+            <style jsx>{`
+                @keyframes marquee {
+                    0% {
+                        transform: translateX(0%);
+                    }
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+
+                .animate-marquee {
+                    animation: marquee 22s linear infinite;
+                    will-change: transform;
+                }
+            `}</style>
 
         </div>
     )

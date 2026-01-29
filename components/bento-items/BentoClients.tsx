@@ -9,12 +9,26 @@ import { bentoBase } from './shared'
 export function BentoClients() {
     return (
         <HardwareCapsuleStatCard
-            variant="lime"
+            variant="white"
             className={cn(bentoBase, "overflow-hidden relative h-[120px] md:h-full")}
             noPadding
         >
-            {/* Bento4 Accent (RIGHT-ALIGNED, LETTERS VISIBLE) */}
-            <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+            {/* ================= VIDEO BACKGROUND (LAST LAYER) ================= */}
+            <video
+                src="/video4.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover z-0"
+                style={{
+                    filter: 'grayscale(90%) contrast(1.15)',
+                    willChange: 'filter'
+                }}
+            />
+
+            {/* ================= PNG ACCENT (ABOVE VIDEO) ================= */}
+            <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-10">
                 <Image
                     src="/bento4.png"
                     alt="Clients Background"
@@ -25,9 +39,10 @@ export function BentoClients() {
                 />
             </div>
 
-            <div className="flex justify-between items-start w-full relative gap-6 p-5 md:p-12">
+            {/* ================= CONTENT ================= */}
+            <div className="flex justify-between items-start w-full relative gap-6 p-5 md:p-12 z-20">
                 {/* TEXT BLOCK */}
-                <div className="flex flex-col gap-2 relative z-10 max-w-[70%]">
+                <div className="flex flex-col gap-2 relative max-w-[70%]">
                     <h3 className="text-2xl md:text-6xl font-black text-black leading-none tracking-tight uppercase">
                         10+<br />
                         CLIENTS
@@ -37,6 +52,7 @@ export function BentoClients() {
                     </p>
                 </div>
             </div>
+
         </HardwareCapsuleStatCard>
     )
 }
