@@ -64,6 +64,11 @@ export const ImpactStats = () => {
         }
     }
 
+    // ✅ Black & White Filter (Reusable)
+    const bwFilter = {
+        filter: 'grayscale(100%) brightness(0.85) contrast(1.2)',
+    }
+
     return (
         <div className="px-6 md:px-12 max-w-7xl mx-auto mt-32 md:mt-60">
             <div id="impact" className="space-y-12">
@@ -83,10 +88,11 @@ export const ImpactStats = () => {
                         label="Projects"
                         variant="white"
                         style={{
-                            backgroundImage: "url('/projects.png')",
+                            backgroundImage: "url('/gif003.gif')",
                             backgroundRepeat: 'no-repeat',
-                            backgroundSize: '150%',
+                            backgroundSize: '100%',
                             backgroundPosition: '60% 40%',
+                            ...bwFilter,
                         }}
                         className="col-span-2 text-black"
                     />
@@ -98,10 +104,11 @@ export const ImpactStats = () => {
                         label="Users"
                         variant="white"
                         style={{
-                            backgroundImage: "url('/users.png')",
+                            backgroundImage: "url('/gif007.gif')",
                             backgroundRepeat: 'no-repeat',
-                            backgroundSize: '140%',
+                            backgroundSize: '110%',
                             backgroundPosition: '50% 50%',
+                            ...bwFilter,
                         }}
                         className="text-black"
                     />
@@ -112,7 +119,7 @@ export const ImpactStats = () => {
                         noPadding
                         className="text-black relative overflow-hidden"
                     >
-                        {/* VIDEO BACKGROUND — YELLOW FILTER */}
+                        {/* VIDEO BACKGROUND — BLACK & WHITE */}
                         <video
                             src="/video3.mp4"
                             autoPlay
@@ -121,12 +128,7 @@ export const ImpactStats = () => {
                             playsInline
                             className="absolute inset-0 w-full h-full object-cover"
                             style={{
-                                filter: `
-                                  sepia(100%)
-                                  hue-rotate(10deg)
-                                  saturate(3)
-                                  contrast(1.1)
-                                `,
+                                filter: 'grayscale(100%) brightness(0.85) contrast(1.2)',
                                 willChange: 'filter'
                             }}
                         />
@@ -134,9 +136,9 @@ export const ImpactStats = () => {
                         {/* TAP / CLICK CAPTURE LAYER */}
                         <div
                             className="absolute inset-0 z-20 cursor-pointer"
-                            onClick={handleClick}                 // 🖥 desktop only
-                            onDoubleClick={handleDoubleClick}     // 🖥 desktop only
-                            onTouchEnd={handleTouchEnd}           // 📱 mobile toggle
+                            onClick={handleClick}
+                            onDoubleClick={handleDoubleClick}
+                            onTouchEnd={handleTouchEnd}
                         />
 
                         {/* OPTIONAL CONTENT LAYER */}
@@ -157,10 +159,11 @@ export const ImpactStats = () => {
                         label="Countries"
                         variant="white"
                         style={{
-                            backgroundImage: "url('/countries.png')",
+                            backgroundImage: "url('/gif004.gif')",
                             backgroundRepeat: 'no-repeat',
-                            backgroundSize: '160%',
-                            backgroundPosition: '45% 55%',
+                            backgroundSize: '190%',
+                            backgroundPosition: '49% 55%',
+                            ...bwFilter,
                         }}
                         className="text-black "
                     />
@@ -172,10 +175,11 @@ export const ImpactStats = () => {
                         label="Response"
                         variant="white"
                         style={{
-                            backgroundImage: "url('/response.png')",
+                            backgroundImage: "url('/gif006.gif')",
                             backgroundRepeat: 'no-repeat',
-                            backgroundSize: '180%',
+                            backgroundSize: '110%',
                             backgroundPosition: '50% 35%',
+                            ...bwFilter,
                         }}
                         className="text-black"
                     />
@@ -187,10 +191,11 @@ export const ImpactStats = () => {
                         label="Rating"
                         variant="white"
                         style={{
-                            backgroundImage: "url('/rating.png')",
+                            backgroundImage: "url('/gif008.gif')",
                             backgroundRepeat: 'no-repeat',
-                            backgroundSize: '150%',
+                            backgroundSize: '100%',
                             backgroundPosition: '55% 45%',
+                            ...bwFilter,
                         }}
                         className="col-span-2 text-black"
                     />

@@ -1,9 +1,18 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 export function Hero() {
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768)
+        checkMobile()
+        window.addEventListener('resize', checkMobile)
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [])
+
     return (
         <section
             id="hero"
@@ -13,11 +22,11 @@ export function Hero() {
             {/* ================= IMAGE7 - MAIN HERO FOCAL ================= */}
             <div
                 className="
-    absolute left-1/2 top-[48%]
-    -translate-x-1/2 -translate-y-1/2
-    z-40
-    w-[85%] md:w-[650px] xl:w-[850px]
-  "
+                    absolute left-1/2 top-[48%]
+                    -translate-x-1/2 -translate-y-1/2
+                    z-40
+                    w-[85%] md:w-[650px] xl:w-[850px]
+                "
             >
                 <Image
                     src="/person.png"
@@ -30,22 +39,29 @@ export function Hero() {
                         translate-x-[-10px] md:translate-x-[-25px]
                         translate-y-[40px] md:translate-y-[80px]
                     "
+                    style={
+                        isMobile
+                            ? {
+                                transform: 'translate(-20px, 90px) scale(1.6)', // ✅ Mobile X,Y,Scale
+                                willChange: 'transform',
+                            }
+                            : undefined
+                    }
                     priority
                     sizes="(max-width: 768px) 100vw, 1000px"
                 />
             </div>
 
-
             {/* ================= RAHUL - MID LAYER ================= */}
             <div
                 className="
-    absolute
-    left-1/2
-    top-[50%] md:top-[42%]
-    -translate-x-1/2 -translate-y-1/2
-    z-30
-    w-[85%] md:w-[740px] xl:w-[980px]
-  "
+                    absolute
+                    left-1/2
+                    top-[50%] md:top-[42%]
+                    -translate-x-1/2 -translate-y-1/2
+                    z-30
+                    w-[85%] md:w-[740px] xl:w-[980px]
+                "
             >
                 <Image
                     src="/RAHUL.png"
@@ -58,11 +74,18 @@ export function Hero() {
                         translate-x-[-6px]
                         -translate-y-[50px] md:-translate-y-[80px]
                     "
+                    style={
+                        isMobile
+                            ? {
+                                transform: 'translate(-6px, -30px) scale(1.1)', // ✅ Mobile X,Y,Scale
+                                willChange: 'transform',
+                            }
+                            : undefined
+                    }
                     priority
                     sizes="(max-width: 768px) 100vw, 1000px"
                 />
             </div>
-
 
             {/* ================= CRISP PURE WHITE INNER STROKE ================= */}
             <div className="pointer-events-none absolute inset-0 z-[60] rounded-[32px] md:rounded-[48px] shadow-[inset_0_0_0_16px_rgba(255,255,255,1)] md:shadow-[inset_0_0_0_32px_rgba(255,255,255,1)]" />

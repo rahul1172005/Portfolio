@@ -23,44 +23,22 @@ export const EditorialQuote = () => {
                 />
             </div>
 
-            {/* Spacer so marquee is BELOW image */}
-            <div className="relative z-10 mt-[55vh] md:mt-[60vh] overflow-hidden">
-
-                {/* MARQUEE WRAPPER */}
-                <div className="relative w-full overflow-hidden">
-                    <div className="flex w-max animate-marquee gap-16">
-
-                        {/* DUPLICATED CONTENT FOR SEAMLESS LOOP */}
-                        {[1, 2].map((i) => (
-                            <p
-                                key={i}
-                                className="text-2xl md:text-5xl font-black tracking-tighter leading-[0.95] whitespace-nowrap text-black-500"
-                            >
-                                Wise men speak less, yet every word cuts through the noise — Rahul R
-                            </p>
-                        ))}
-
-                    </div>
-                </div>
-
+            {/* Quote Sentence BELOW image */}
+            <div className="relative z-10 mt-[55vh] md:mt-[60vh] flex justify-center">
+                <p
+                    className="text-2xl md:text-5xl font-black tracking-tighter leading-[0.95] text-black-500 text-center max-w-5xl"
+                    style={{
+                        transform: 'translate(0px, 100px) scale(1)',
+                        willChange: 'transform'
+                    }}
+                >
+                    Wise men speak less, yet every word cuts through the noise
+                    <br />
+                    <span className="block mt-4 text-xl md:text-3xl font-black">
+                        — Rahul R
+                    </span>
+                </p>
             </div>
-
-            {/* LOCAL STYLES */}
-            <style jsx>{`
-                @keyframes marquee {
-                    0% {
-                        transform: translateX(0%);
-                    }
-                    100% {
-                        transform: translateX(-50%);
-                    }
-                }
-
-                .animate-marquee {
-                    animation: marquee 22s linear infinite;
-                    will-change: transform;
-                }
-            `}</style>
 
         </div>
     )

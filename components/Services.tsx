@@ -3,6 +3,7 @@
 import React from 'react'
 import { ArrowRight } from 'lucide-react'
 import HardwareCapsuleStatCard from '@/components/HardwareCapsuleStatCard'
+import Image from 'next/image'
 
 export const Services = () => {
     return (
@@ -37,6 +38,18 @@ export const Services = () => {
                             "
                         >
                             <div className="relative w-full h-full">
+
+                                {/* BACKGROUND GIF */}
+                                <div className="absolute inset-0 z-0">
+                                    <Image
+                                        src="/servicevideo.gif"
+                                        alt="Service Background"
+                                        fill
+                                        className="object-cover grayscale brightness-75 contrast-125"
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                        priority
+                                    />
+                                </div>
 
                                 {/* CONTENT */}
                                 <div className="relative z-10 flex justify-between items-center w-full h-full p-4 md:p-6">

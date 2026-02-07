@@ -14,7 +14,7 @@ export function BentoLocation() {
         >
             {/* ================= GIF BACKGROUND (B&W) ================= */}
             <img
-                src="/video2.gif"
+                src="/gif002.gif"
                 alt="Location Background"
                 className="absolute inset-0 w-full h-full object-cover z-0"
                 style={{

@@ -13,6 +13,19 @@ export function BentoSquareGraph() {
             className={cn(bentoBase, "overflow-hidden h-[120px] md:h-full")}
             noPadding
         >
+            {/* Background GIF */}
+            <div className="absolute inset-0 w-full h-full z-0">
+                <Image
+                    src="/abstract.gif"
+                    alt="Abstract Background"
+                    fill
+                    className="object-cover grayscale brightness-75 contrast-125"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    priority
+                />
+            </div>
+
+            {/* Foreground Image */}
             <div className="absolute inset-0 w-full h-full z-10 -m-px">
                 <Image
                     src="/bento2.png"

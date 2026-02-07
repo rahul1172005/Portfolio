@@ -7,23 +7,28 @@ import { cn } from '@/lib/utils'
 import { bentoBase } from './shared'
 
 export function BentoNextCohort() {
+    const handleClick = () => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+    }
+
     return (
         <HardwareCapsuleStatCard
             variant="black"
             className={cn(bentoBase, 'relative overflow-hidden h-[80px] md:h-full')}
             noPadding
+            onClick={handleClick}
         >
-            {/* Full Background Image with Static X + Y Offset */}
+            {/* Background GIF */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/bento8 (2).png"   // must be in public/
+                    src="/gif001.gif"
                     alt="Apply Now Background"
                     fill
                     priority
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-center"
+                    className="object-cover object-center grayscale brightness-75 contrast-125"
                     style={{
-                        transform: 'translate(0px, 0px) scale(1.0)', // ✅ X, Y, Zoom
+                        transform: 'translate(0px, 0px) scale(1.0)',
                         willChange: 'transform'
                     }}
                 />

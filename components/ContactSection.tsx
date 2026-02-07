@@ -99,7 +99,7 @@ export const ContactSection = () => {
 
                     {/* Full Name */}
                     <div>
-                        <label className="block text-xs font-black uppercase tracking-[0.3em] mb-2 text-black/60">
+                        <label className="block text-s font-black uppercase tracking-[0.3em] mb-2 text-black/100">
                             Full Name
                         </label>
                         <input
@@ -115,7 +115,7 @@ export const ContactSection = () => {
 
                     {/* Email */}
                     <div>
-                        <label className="block text-xs font-black uppercase tracking-[0.3em] mb-2 text-black/60">
+                        <label className="block text-s font-black uppercase tracking-[0.3em] mb-2 text-black/100">
                             Email
                         </label>
                         <input
@@ -131,7 +131,7 @@ export const ContactSection = () => {
 
                     {/* Project Type */}
                     <div>
-                        <label className="block text-xs font-black uppercase tracking-[0.3em] mb-2 text-black/60">
+                        <label className="block text-s font-black uppercase tracking-[0.3em] mb-2 text-black/100">
                             Project Type
                         </label>
                         <select
@@ -151,7 +151,7 @@ export const ContactSection = () => {
 
                     {/* Budget */}
                     <div>
-                        <label className="block text-xs font-black uppercase tracking-[0.3em] mb-2 text-black/60">
+                        <label className="block text-s font-black uppercase tracking-[0.3em] mb-2 text-black/100">
                             Budget Range
                         </label>
                         <select
@@ -160,16 +160,16 @@ export const ContactSection = () => {
                             onChange={handleInputChange}
                             className="w-full h-14 px-5 bg-white border border-black/10 rounded-2xl font-bold tracking-tight focus:outline-none focus:border-black"
                         >
-                            <option>₹10k – ₹50k</option>
-                            <option>₹50k – ₹1L</option>
-                            <option>₹1L – ₹5L</option>
-                            <option>₹5L+</option>
+                            <option>₹2k – ₹5k</option>
+                            <option>₹5k – ₹10k</option>
+                            <option>₹10k – ₹25k</option>
+                            <option>₹25k+</option>
                         </select>
                     </div>
 
                     {/* Project Details */}
                     <div className="md:col-span-2">
-                        <label className="block text-xs font-black uppercase tracking-[0.3em] mb-2 text-black/60">
+                        <label className="block text-s font-black uppercase tracking-[0.3em] mb-2 text-black/100">
                             Project Details
                         </label>
                         <textarea
@@ -261,8 +261,8 @@ export const ContactSection = () => {
                 </a>
             </div>
 
-            <footer className="py-12 bg-white text-center text-black text-xs font-black uppercase tracking-[0.5em] border-t border-black/5 mt-24">
-                © 2026 RAHUL R. // ALL RIGHTS RESERVED
+            <footer className="py-12 bg-white text-center text-black text-s font-black uppercase tracking-[0.5em] border-t border-black/5 mt-24">
+                © 2026 RAHUL R // ALL RIGHTS RESERVED
             </footer>
         </div>
     )
