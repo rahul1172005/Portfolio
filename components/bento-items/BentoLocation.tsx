@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import HardwareCapsuleStatCard from '../HardwareCapsuleStatCard'
+import HardwareCapsuleStatCard from '@/components/HardwareCapsuleStatCard'
 import { cn } from '@/lib/utils'
 import { bentoBase } from './shared'
 
@@ -9,20 +9,17 @@ export function BentoLocation() {
     return (
         <HardwareCapsuleStatCard
             variant="white"
-            className={cn(bentoBase, 'relative overflow-hidden h-[120px] md:h-full')}
+            className={cn(
+                bentoBase,
+                'relative overflow-hidden h-[120px] md:h-full bg-[#CCFF00] flex items-center justify-center'
+            )}
             noPadding
         >
-            {/* ================= GIF BACKGROUND (B&W) ================= */}
-            <img
-                src="/gif002.gif"
-                alt="Location Background"
-                className="absolute inset-0 w-full h-full object-cover z-0"
-                style={{
-                    filter: 'grayscale(100%) contrast(1.05)',
-                    transform: 'translate(10px, -6px) scale(1.2)', // ✅ X, Y, SCALE
-                    willChange: 'transform, filter'
-                }}
-            />
+            <div className="flex items-center justify-center w-full h-full">
+                <span className="text-black text-8xl md:text-[10rem] font-black leading-none select-none">
+                    ?
+                </span>
+            </div>
         </HardwareCapsuleStatCard>
     )
 }

@@ -1,151 +1,60 @@
 'use client'
 
-import React from "react";
-import { cn } from "@/lib/utils";
-import { LucideIcon } from "lucide-react";
+import React from 'react'
+import { motion } from 'framer-motion'
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
 
-type HardwareCapsuleStatCardProps = {
-    value?: string;
-    label?: string;
-    subLabel?: string;
-    icon?: LucideIcon;
-    className?: string;
-    style?: React.CSSProperties;
-    children?: React.ReactNode;
+// Inline cn to avoid any issues with external imports during troubleshooting
+function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs))
+}
 
-    variant?: 'lime' | 'black' | 'outline' | 'white';
-    noPadding?: boolean;
+interface HardwareCapsuleStatCardProps {
+    children: React.ReactNode
+    variant?: 'white' | 'black' | 'lime' | 'glass'
+    className?: string
+    noPadding?: boolean
+    onClick?: () => void
+}
 
-    // ✅ Only for ImpactStats
-    impactHover?: boolean;
-    onClick?: () => void;
-};
-
-const HardwareCapsuleStatCard: React.FC<HardwareCapsuleStatCardProps> = ({
-    value,
-    label,
-    subLabel,
-    icon: Icon,
-    className,
-    style,
+const HardwareCapsuleStatCard = ({
     children,
-
-    variant = 'lime',
+    variant = 'white',
+    className,
     noPadding = false,
-    impactHover = false,
-    onClick,
-}) => {
-    const getVariantStyles = () => {
-        switch (variant) {
-            case 'black':
-                return "bg-black text-white";
-            case 'outline':
-                return "bg-black border-4 border-[#d9ff00] text-white";
-            case 'white':
-                return "bg-white text-black";
-            case 'lime':
-            default:
-                return "bg-[#d9ff00] text-black";
-        }
+    onClick
+}: HardwareCapsuleStatCardProps) => {
+    const variantStyles = {
+        white: 'bg-white text-black border-black/5',
+        black: 'bg-black text-[#d9ff00] border-white/10',
+        lime: 'bg-[#d9ff00] text-black border-black/5',
+        glass: 'glass text-white border-white/10'
     }
 
     return (
-        <div
+        <motion.div
+            whileHover={onClick ? { scale: 0.985 } : undefined}
             onClick={onClick}
-            style={style}
             className={cn(
-                "relative flex flex-col justify-center rounded-[32px] md:rounded-[60px] transition-all duration-500 group overflow-hidden h-full",
-                !noPadding && "p-4 md:p-10",
-                getVariantStyles(),
+                'relative rounded-[32px] border transition-all duration-500 overflow-hidden group',
+                variantStyles[variant],
+                !noPadding && 'p-6 md:p-12',
+                onClick && 'cursor-pointer',
                 className
             )}
         >
-            {/* ================= BLUR OVERLAY — IMPACT ONLY ================= */}
-            {impactHover && (
-                <div
-                    className="
-                      absolute inset-0 z-0
-                      opacity-0 group-hover:opacity-100
-                      backdrop-blur-lg bg-white/70
-                      transition-all duration-500
-                    "
-                />
-            )}
-
-            {/* ================= CONTENT ================= */}
-            <div className="relative z-10 flex flex-col h-full justify-center">
-                {children ? (
-                    children
-                ) : (
-                    <div className="space-y-3 md:space-y-4">
-                        <div className="flex justify-between items-start">
-
-                            {/* VALUE — BLACK ON HOVER (IMPACT ONLY) */}
-                            {value && (
-                                <div
-                                    className={cn(
-                                        `
-                                        text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-none uppercase
-                                        opacity-0 translate-y-6
-                                        group-hover:opacity-100 group-hover:translate-y-0
-                                        transition-all duration-500 ease-out
-                                        `,
-                                        impactHover ? "text-black" : ""
-                                    )}
-                                >
-                                    {value}
-                                </div>
-                            )}
-
-                            {Icon && (
-                                <div className={cn(
-                                    "w-12 h-12 md:w-16 md:h-16 rounded-full border-4 flex items-center justify-center transition-transform group-hover:scale-110 duration-500",
-                                    variant === 'lime' ? "border-black" : "border-[#d9ff00]"
-                                )}>
-                                    <Icon className="w-6 h-6 md:w-8 md:h-8" />
-                                </div>
-                            )}
-                        </div>
-
-                        {/* LABEL + SUBLABEL — BLACK ON HOVER (IMPACT ONLY) */}
-                        <div className="space-y-1">
-                            {label && (
-                                <div
-                                    className={cn(
-                                        `
-                                        text-base md:text-2xl font-black uppercase tracking-tight leading-none
-                                        opacity-0 translate-y-4
-                                        group-hover:opacity-100 group-hover:translate-y-0
-                                        transition-all duration-500 ease-out delay-75
-                                        `,
-                                        impactHover ? "text-black" : ""
-                                    )}
-                                >
-                                    {label}
-                                </div>
-                            )}
-
-                            {subLabel && (
-                                <div
-                                    className={cn(
-                                        `
-                                        text-xs md:text-sm font-bold uppercase tracking-widest
-                                        opacity-0 translate-y-3
-                                        group-hover:opacity-100 group-hover:translate-y-0
-                                        transition-all duration-500 ease-out delay-150
-                                        `,
-                                        impactHover ? "text-black" : ""
-                                    )}
-                                >
-                                    {subLabel}
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                )}
+            {/* Subtle Inner Glow / Reflection */}
+            <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                <div className="absolute inset-[-100%] bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05),transparent_70%)]" />
             </div>
-        </div>
-    );
-};
 
-export default HardwareCapsuleStatCard;
+            <div className="relative z-10 h-full w-full">
+                {children}
+            </div>
+        </motion.div>
+    )
+}
+
+export default HardwareCapsuleStatCard
+export { HardwareCapsuleStatCard }

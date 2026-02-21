@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import HardwareCapsuleStatCard from '../HardwareCapsuleStatCard'
+import HardwareCapsuleStatCard from '@/components/HardwareCapsuleStatCard'
 import { cn } from '@/lib/utils'
 import { bentoBase } from './shared'
 

@@ -2,30 +2,21 @@
 
 import React from 'react'
 import Image from 'next/image'
-import HardwareCapsuleStatCard from '../HardwareCapsuleStatCard'
+import HardwareCapsuleStatCard from '@/components/HardwareCapsuleStatCard'
 import { cn } from '@/lib/utils'
 import { bentoBase } from './shared'
 
 export function BentoSquareGraph() {
     return (
         <HardwareCapsuleStatCard
-            variant="black"
-            className={cn(bentoBase, "overflow-hidden h-[120px] md:h-full")}
+            variant="white"
+            className={cn(
+                bentoBase,
+                "relative overflow-hidden h-[120px] md:h-full bg-[#CCFF00]"
+            )}
             noPadding
         >
-            {/* Background GIF */}
-            <div className="absolute inset-0 w-full h-full z-0">
-                <Image
-                    src="/abstract.gif"
-                    alt="Abstract Background"
-                    fill
-                    className="object-cover grayscale brightness-75 contrast-125"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    priority
-                />
-            </div>
-
-            {/* Foreground Image */}
+            {/* Foreground Image (Unchanged) */}
             <div className="absolute inset-0 w-full h-full z-10 -m-px">
                 <Image
                     src="/bento2.png"

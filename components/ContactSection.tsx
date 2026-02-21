@@ -254,15 +254,15 @@ export const ContactSection = () => {
                     LinkedIn
                 </a>
                 <a
-                    href="#"
+                    href="https://github.com/rahul1172005"
                     className="text-2xl font-black text-black hover:text-[#d9ff00] transition-colors uppercase tracking-tighter"
                 >
                     GitHub
                 </a>
             </div>
 
-            <footer className="py-12 bg-white text-center text-black text-s font-black uppercase tracking-[0.5em] border-t border-black/5 mt-24">
-                © 2026 RAHUL R // ALL RIGHTS RESERVED
+            <footer className="py-12 bg-transparent text-center text-black text-s font-black uppercase tracking-[0.5em] border-t border-black/5 mt-24">
+                2026 RAHUL R  // ALL RIGHTS RESERVED
             </footer>
         </div>
     )

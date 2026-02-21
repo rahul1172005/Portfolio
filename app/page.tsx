@@ -12,7 +12,7 @@ import { ContactSection } from '@/components/ContactSection'
 
 export default function Home() {
     return (
-        <main className="min-h-screen bg-white text-black selection:bg-[#d9ff00] selection:text-black overflow-x-hidden w-full">
+        <main className="min-h-screen bg-transparent text-black selection:bg-[#d9ff00] selection:text-black overflow-x-hidden w-full">
 
             {/* HERO SECTION */}
             <Hero />
@@ -23,7 +23,7 @@ export default function Home() {
             {/* ================= ABOUT (FULL WIDTH, INNER RAILS) ================= */}
             <section
                 id="about"
-                className="pt-0 pb-24 w-full mx-auto space-y-24 bg-white"
+                className="pt-0 pb-24 w-full mx-auto space-y-24 bg-transparent"
             >
                 {/* ================= BENTO GRID (FULL WIDTH BUT ALIGNED GUTTERS) ================= */}
                 <BentoGrid />

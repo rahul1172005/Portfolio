@@ -1,9 +1,8 @@
 'use client'
 
 import React from 'react'
+import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import HardwareCapsuleStatCard from '@/components/HardwareCapsuleStatCard'
-import Image from 'next/image'
 
 export const Services = () => {
     return (
@@ -22,57 +21,34 @@ export const Services = () => {
                         { title: 'UI/UX Design', desc: 'Premium Interfaces' },
                         { title: 'SaaS Systems', desc: 'Enterprise Solutions' },
                         { title: 'AI Integration', desc: 'Neural Networks' },
-                    ].map((service, i) => (
-                        <HardwareCapsuleStatCard
-                            key={i}
-                            variant="black"
-                            noPadding
-                            className="
-                              h-48 sm:h-64 
-                              overflow-hidden 
-                              text-white
-                              bg-gradient-to-br 
-                              from-[#050505] 
-                              via-[#0d0d0f] 
-                              to-[#141417]
-                            "
-                        >
-                            <div className="relative w-full h-full">
-
-                                {/* BACKGROUND GIF */}
-                                <div className="absolute inset-0 z-0">
-                                    <Image
-                                        src="/servicevideo.gif"
-                                        alt="Service Background"
-                                        fill
-                                        className="object-cover grayscale brightness-75 contrast-125"
-                                        sizes="(max-width: 768px) 100vw, 50vw"
-                                        priority
-                                    />
-                                </div>
-
-                                {/* CONTENT */}
-                                <div className="relative z-10 flex justify-between items-center w-full h-full p-4 md:p-6">
-                                    <div className="space-y-2">
-                                        <h4 className="text-2xl sm:text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none text-white">
-                                            {service.title}
-                                        </h4>
-                                        <p className="text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-white/60">
+                    ].map((service, i) => {
+                        const isDark = service.title === 'Development' || service.title === 'AI Integration';
+                        return (
+                            <motion.div
+                                key={i}
+                                whileHover={{ scale: 0.98 }}
+                                className={`${isDark ? 'bg-black text-[#d9ff00]' : 'bg-[#d9ff00] text-black'} p-8 md:p-12 rounded-[32px] h-64 md:h-80 flex flex-col justify-between border border-black/5 relative overflow-hidden`}
+                            >
+                                <div className="space-y-4 relative z-10">
+                                    <h4 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none">
+                                        {service.title}
+                                    </h4>
+                                    <div className="flex items-center gap-2">
+                                        <div className={`w-1.5 h-1.5 rounded-full ${isDark ? 'bg-[#d9ff00] animate-pulse' : 'bg-black'}`} />
+                                        <p className={`text-[10px] md:text-xs font-black uppercase tracking-[0.3em] ${isDark ? 'text-[#d9ff00]/60' : 'opacity-60'}`}>
                                             {service.desc}
                                         </p>
                                     </div>
-
-                                    {/* Arrow — Dark Glass */}
-                                    <div className="w-12 h-12 md:w-20 md:h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center min-w-[48px] min-h-[48px] md:min-w-[64px] md:min-h-[64px]">
-                                        <ArrowRight className="text-white w-6 h-6 md:w-10 md:h-10" />
-                                    </div>
                                 </div>
 
-                                {/* SUBTLE INNER GLOW */}
-                                <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]" />
-                            </div>
-                        </HardwareCapsuleStatCard>
-                    ))}
+                                <div className="flex justify-end relative z-10">
+                                    <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full border ${isDark ? 'border-[#d9ff00]/20' : 'border-black/10'} flex items-center justify-center`}>
+                                        <ArrowRight className={`${isDark ? 'text-[#d9ff00]' : 'text-black'} w-6 h-6 md:w-8 md:h-8`} />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
         </div>

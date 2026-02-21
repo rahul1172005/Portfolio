@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
-import HardwareCapsuleStatCard from '@/components/HardwareCapsuleStatCard'
+import HardwareCapsuleStatCard from './HardwareCapsuleStatCard'
 
 export const IntroCards = () => {
     return (
