@@ -39,7 +39,7 @@ const leftColumn: CardData[] = [
         imageHeight: 360,
         scale: 1.55,
         translateY: 0,
-        mobileScale: 2.5,
+        mobileScale: 2.9,
         mobileTranslateY: 0,
     },
     {
@@ -61,7 +61,7 @@ const leftColumn: CardData[] = [
         image: '/card4.jpeg',
         href: '#',
         imageHeight: 300,
-        scale: 1.5,
+        scale: 1.9,
         mobileScale: 1.8,
     },
     {
@@ -73,7 +73,7 @@ const leftColumn: CardData[] = [
         imageHeight: 260,
         scale: 1.1,
         translateY: 10,
-        mobileScale: 1.6,
+        mobileScale: 1.9,
         mobileTranslateY: 0,
     },
 ]
@@ -89,7 +89,7 @@ const rightColumn: CardData[] = [
         image: '/card1.jpeg',
         href: '#',
         imageHeight: 440,
-        scale: 1.6,
+        scale: 1.9,
         mobileScale: 2.7,
     },
     {
@@ -123,7 +123,7 @@ const rightColumn: CardData[] = [
         imageHeight: 320,
         scale: 1.3,
         translateY: 20,
-        mobileScale: 1.8,
+        mobileScale: 2.2,
         mobileTranslateY: 5,
     },
 ]

@@ -43,7 +43,7 @@ export const EditorialQuote = () => {
                         src="/quotes1.png"
                         alt="Quote Background"
                         fill
-                        className="object-cover opacity-80"
+                        className="object-cover opacity-0"
                         sizes="100vw"
                         style={{
                             transform: `translate(${activeTransform.translateX}px, ${activeTransform.translateY}px) scale(${activeTransform.scale})`,
