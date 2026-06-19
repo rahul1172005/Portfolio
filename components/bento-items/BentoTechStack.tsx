@@ -13,25 +13,19 @@ export function BentoTechStack() {
             className={cn(bentoBase, 'bg-gray-200 overflow-hidden relative h-[240px] md:h-full')}
             noPadding
         >
-            {/* BENTO3 IMAGE - SILHOUETTE */}
-            <div className="absolute inset-0 w-full h-full">
+            {/* Logo Image with scale and translation positioning */}
+            <div className="absolute inset-0 z-0 flex items-center justify-center">
                 <Image
-                    src="/bento3.png"
-                    alt="Components"
+                    src="/logooooo.png"
+                    alt="Logo Visual"
                     fill
-                    className="object-cover object-[center_20%]"
+                    priority
                     sizes="(max-width: 768px) 100vw, 50vw"
-                />
-            </div>
-
-            {/* BENTO3(1) IMAGE - TECH ICONS OVERLAY */}
-            <div className="absolute inset-0 w-full h-full z-10">
-                <Image
-                    src="/bento3-1.png"
-                    alt="Tech Icons"
-                    fill
-                    className="object-cover object-[center_20%]"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-contain p-2"
+                    style={{
+                        transform: 'translate(0px, 0px) scale(1.3)', // Customizable scale and translation axis attributes
+                        willChange: 'transform'
+                    }}
                 />
             </div>
         </HardwareCapsuleStatCard>

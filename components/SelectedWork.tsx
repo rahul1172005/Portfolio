@@ -1,261 +1,181 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import { ArrowUpRight } from 'lucide-react'
 
-/* ─────────────────────────────────────────────────────────────
-   Card Interface (Desktop + Mobile Transform Support)
-───────────────────────────────────────────────────────────── */
-interface CardData {
+interface VentureData {
     id: number
     name: string
-    category: string
-    image: string
+    tagline?: string
+    description: string
+    offerings: string[]
     href: string
-    imageHeight: number
-
-    // 🖥 Desktop
-    scale?: number
-    translateX?: number
-    translateY?: number
-
-    // 📱 Mobile
-    mobileScale?: number
-    mobileTranslateX?: number
-    mobileTranslateY?: number
+    accentColor: string
+    glowClass: string
+    isLight: boolean
+    cardBg: string
+    textColorClass: string
+    descColorClass: string
+    taglineColorClass: string
+    offeringsLabelColorClass: string
+    offeringTagClass: string
+    ctaColorClass: string
+    ctaDisabledColorClass: string
 }
 
-/* ─────────────────────────────────────────────────────────────
-   LEFT COLUMN
-───────────────────────────────────────────────────────────── */
-const leftColumn: CardData[] = [
+const ventures: VentureData[] = [
     {
         id: 1,
-        name: 'ZAPSTERS',
-        category: '/ platform',
-        image: '/work1.jpg',
-        href: 'https://zapsters.in',
-        imageHeight: 360,
-        scale: 1.55,
-        translateY: 0,
-        mobileScale: 2.9,
-        mobileTranslateY: 0,
+        name: 'QUANTUM',
+        description: 'Pioneering next-generation intelligence, advanced research, and high-impact training to shape the future of technology.',
+        offerings: ['AI Solutions', 'Internships', 'Research', 'Training'],
+        href: 'https://www.ouantum.com',
+        accentColor: 'transparent',
+        glowClass: 'border-transparent',
+        isLight: false,
+        cardBg: 'bg-black border-neutral-900',
+        textColorClass: 'text-[#CCFF00]',
+        descColorClass: 'text-[#CCFF00]/80',
+        taglineColorClass: 'text-[#CCFF00]',
+        offeringsLabelColorClass: 'text-[#CCFF00]/40',
+        offeringTagClass: 'bg-[#CCFF00]/10 border-[#CCFF00]/20 text-[#CCFF00]',
+        ctaColorClass: 'text-[#CCFF00]',
+        ctaDisabledColorClass: 'text-[#CCFF00]/40'
     },
-    {
-        id: 3,
-        name: 'TASTE OF TRIOS',
-        category: '/ business',
-        image: '/card2.jpeg',
-        href: '#',
-        imageHeight: 220,
-        scale: 2.0,
-        translateY: 85,
-        mobileScale: 1.3,
-        mobileTranslateY: 20,
-    },
-    {
-        id: 5,
-        name: 'GYM',
-        category: '/ business',
-        image: '/card4.jpeg',
-        href: '#',
-        imageHeight: 300,
-        scale: 1.9,
-        mobileScale: 1.8,
-    },
-    {
-        id: 7,
-        name: 'AMOR MOTIS',
-        category: '/ site',
-        image: '/work8.jpg',
-        href: 'https://ctf.cybercom.live/',
-        imageHeight: 260,
-        scale: 1.1,
-        translateY: 10,
-        mobileScale: 1.9,
-        mobileTranslateY: 0,
-    },
-]
-
-/* ─────────────────────────────────────────────────────────────
-   RIGHT COLUMN
-───────────────────────────────────────────────────────────── */
-const rightColumn: CardData[] = [
     {
         id: 2,
-        name: 'PAWSHOME',
-        category: '/ business',
-        image: '/card1.jpeg',
-        href: '#',
-        imageHeight: 440,
-        scale: 1.9,
-        mobileScale: 2.7,
-    },
-    {
-        id: 4,
-        name: 'SVBM',
-        category: '/ business',
-        image: '/card3.jpeg',
-        href: '#',
-        imageHeight: 190,
-        scale: 2.2,
-        translateY: 37,
-        mobileScale: 1.4,
-        mobileTranslateY: 10,
-    },
-    {
-        id: 6,
-        name: 'RAD',
-        category: '/ saas',
-        image: '/card5.jpeg',
-        href: '#',
-        imageHeight: 280,
-        scale: 2.0,
-        mobileScale: 1.3,
-    },
-    {
-        id: 8,
-        name: 'CYBERTRON',
-        category: '/ site',
-        image: '/work7.jpg',
-        href: 'https://www.cybertronctf.online/',
-        imageHeight: 320,
-        scale: 1.3,
-        translateY: 20,
-        mobileScale: 2.2,
-        mobileTranslateY: 5,
-    },
+        name: 'ZAPSTERS',
+        description: 'Building world-class digital products and providing industry-grade courses and internships to empower the next wave of tech builders.',
+        offerings: ['Websites', 'Courses', 'Internships', 'Products'],
+        href: 'https://zapsters.in',
+        accentColor: '#CCFF00', // neon lime
+        glowClass: 'border-black/10',
+        isLight: true,
+        cardBg: 'bg-[#CCFF00] border-black/5',
+        textColorClass: 'text-black',
+        descColorClass: 'text-black/75',
+        taglineColorClass: 'text-black',
+        offeringsLabelColorClass: 'text-black/40',
+        offeringTagClass: 'bg-black/5 border-black/10 text-black/80',
+        ctaColorClass: 'text-black',
+        ctaDisabledColorClass: 'text-black/40'
+    }
 ]
 
-/* ─────────────────────────────────────────────────────────────
-   Project Card Component
-───────────────────────────────────────────────────────────── */
-const ProjectCard = ({ card }: { card: CardData }) => {
-    const [isMobile, setIsMobile] = useState(false)
-
-    useEffect(() => {
-        const check = () => setIsMobile(window.innerWidth < 768)
-        check()
-        window.addEventListener('resize', check)
-        return () => window.removeEventListener('resize', check)
-    }, [])
-
-    const isLinkValid = card.href && card.href !== '#'
-
-    // Choose correct transform values
-    const scale = isMobile
-        ? card.mobileScale ?? card.scale ?? 1
-        : card.scale ?? 1
-
-    const translateX = isMobile
-        ? card.mobileTranslateX ?? card.translateX ?? 0
-        : card.translateX ?? 0
-
-    const translateY = isMobile
-        ? card.mobileTranslateY ?? card.translateY ?? 0
-        : card.translateY ?? 0
-
-    return (
-        <motion.div
-            whileHover={{ y: -12 }}
-            className="group relative w-full overflow-hidden rounded-[40px] bg-[#111111] cursor-default shadow-sm hover:shadow-2xl transition-all duration-700"
-            style={{ height: card.imageHeight }}
-        >
-            <Image
-                src={card.image}
-                alt={card.name}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-contain transition-all duration-1000 ease-out group-hover:blur-md group-hover:opacity-40"
-                style={{
-                    transform: `translate(${translateX}px, ${translateY}px) scale(${scale})`,
-                    transformOrigin: 'center',
-                    willChange: 'transform',
-                }}
-            />
-
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-            {/* Hover Content */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
-                <div className="mb-4 inline-flex items-center gap-3 px-4 py-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/10">
-                    <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/80">
-                        {card.category.replace('/ ', '')}
-                    </span>
-                </div>
-
-                <h4 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white leading-none mb-6">
-                    {card.name}
-                </h4>
-
-                {isLinkValid ? (
-                    <a
-                        href={card.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-[10px] font-bold text-[#d9ff00] uppercase tracking-[0.2em] hover:scale-110 transition-transform duration-300 no-underline"
-                    >
-                        <span>View Project</span>
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                            <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </a>
-                ) : (
-                    <div className="flex items-center gap-2 text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] cursor-not-allowed">
-                        <span>No Preview</span>
-                    </div>
-                )}
-            </div>
-        </motion.div>
-    )
-}
-
-/* ─────────────────────────────────────────────────────────────
-   Selected Work Section
-───────────────────────────────────────────────────────────── */
 export const SelectedWork = () => {
     return (
-        <section id="work" className="py-24 md:py-40 bg-transparent">
+        <section id="ventures" className="py-24 md:py-40 bg-transparent relative z-10">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-                <div className="flex flex-col items-center mb-24 text-center">
-                    <h3 className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter uppercase text-black leading-[0.8]">
-                        MY <br className="md:hidden" /> WORK
-                    </h3>
+                {/* Section Title */}
+                <div className="flex flex-col items-center mb-20 md:mb-28 text-center">
+                    <motion.h3
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="text-6xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter uppercase text-black leading-[0.8]"
+                    >
+                        VENTURES
+                    </motion.h3>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                {/* Ventures Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                    {ventures.map((venture, index) => {
+                        const isLinkValid = venture.href && venture.href !== '#'
 
-                    <div className="flex flex-col gap-6">
-                        {leftColumn.map((card, index) => (
+                        return (
                             <motion.div
-                                key={card.id}
-                                initial={{ opacity: 0, y: 50 }}
+                                key={venture.id}
+                                initial={{ opacity: 0, y: 60 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: index * 0.1 }}
+                                transition={{ duration: 0.8, delay: index * 0.15 }}
+                                className="w-full"
                             >
-                                <ProjectCard card={card} />
-                            </motion.div>
-                        ))}
-                    </div>
+                                <div
+                                    className={`relative w-full overflow-hidden rounded-[40px] ${venture.cardBg} border shadow-md ${venture.glowClass} group transition-all duration-500 hover:shadow-xl hover:-translate-y-1`}
+                                    style={{ height: '520px' }}
+                                >
 
-                    <div className="flex flex-col gap-6 md:mt-24">
-                        {rightColumn.map((card, index) => (
-                            <motion.div
-                                key={card.id}
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: (index * 0.1) + 0.2 }}
-                            >
-                                <ProjectCard card={card} />
-                            </motion.div>
-                        ))}
-                    </div>
 
+                                    {/* Ambient Glow Aura */}
+                                    {venture.accentColor && venture.accentColor !== 'transparent' && (
+                                        <div
+                                            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full blur-[100px] pointer-events-none opacity-30 group-hover:opacity-40 transition-opacity duration-700"
+                                            style={{
+                                                background: `radial-gradient(circle, ${venture.accentColor} 0%, transparent 70%)`
+                                            }}
+                                        />
+                                    )}
+
+                                    {/* Card Content */}
+                                    <div className={`absolute inset-0 flex flex-col justify-between p-8 md:p-12 z-10 ${venture.textColorClass}`}>
+                                        {/* Top Header */}
+                                        <div>
+                                            {venture.tagline && (
+                                                <span
+                                                    className={`text-[10px] font-black uppercase tracking-[0.25em] ${venture.taglineColorClass}`}
+                                                >
+                                                    {venture.tagline}
+                                                </span>
+                                            )}
+                                            <h4 className={`text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none ${venture.tagline ? 'mt-2' : 'mt-0'}`}>
+                                                {venture.name}
+                                            </h4>
+                                            <p className={`${venture.descColorClass} text-sm font-bold leading-relaxed max-w-sm mt-4 uppercase tracking-wider`}>
+                                                {venture.description}
+                                            </p>
+                                        </div>
+
+                                        {/* Bottom Footer Details */}
+                                        <div className="space-y-6">
+                                            {/* Offerings Tag List */}
+                                            <div>
+                                                <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${venture.offeringsLabelColorClass} block mb-3`}>
+                                                    Key Offerings
+                                                </span>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {venture.offerings.map((offering) => (
+                                                        <span
+                                                            key={offering}
+                                                            className={`text-[9px] font-black uppercase tracking-widest px-3.5 py-1.5 rounded-full border ${venture.offeringTagClass}`}
+                                                            style={{
+                                                                cursor: 'default'
+                                                            }}
+                                                        >
+                                                            {offering}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            {/* CTA Action */}
+                                            <div className="pt-2">
+                                                {isLinkValid ? (
+                                                    <a
+                                                        href={venture.href}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className={`inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] no-underline ${venture.ctaColorClass}`}
+                                                    >
+                                                        <span>Visit Website</span>
+                                                        <ArrowUpRight size={14} strokeWidth={3.5} />
+                                                    </a>
+                                                ) : (
+                                                    <div className={`inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] ${venture.ctaDisabledColorClass}`}>
+                                                        <span>Ecosystem Launching Soon</span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )
+                    })}
                 </div>
             </div>
         </section>

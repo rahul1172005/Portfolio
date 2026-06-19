@@ -9,20 +9,20 @@ export const Services = () => {
         <div className="px-6 md:px-12 max-w-7xl mx-auto mt-32 md:mt-40">
             <div id="services" className="space-y-12">
 
-                <div className="flex justify-center items-baseline border-b border-black/5 pb-10">
-                    <h3 className="text-5xl md:text-8xl xl:text-9xl font-black tracking-tighter uppercase text-black text-center leading-none">
-                        Services
+                <div className="flex justify-center items-center border-b border-black/5 pb-10">
+                    <h3 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase text-black text-center leading-[0.9] max-w-4xl">
+                        Building the future<br className="hidden sm:inline" /> through
                     </h3>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
                     {[
-                        { title: 'Development', desc: 'Full Stack Architecture' },
-                        { title: 'UI/UX Design', desc: 'Premium Interfaces' },
-                        { title: 'SaaS Systems', desc: 'Enterprise Solutions' },
-                        { title: 'AI Integration', desc: 'Neural Networks' },
+                        { title: 'Intelligent Systems', desc: 'AI & Neural Networks' },
+                        { title: 'Digital Products', desc: 'Full Stack Architecture' },
+                        { title: 'Startup Ecosystems', desc: 'Venture & Scaling' },
+                        { title: 'Human-Centered Design', desc: 'Premium Interfaces' },
                     ].map((service, i) => {
-                        const isDark = service.title === 'Development' || service.title === 'AI Integration';
+                        const isDark = i === 0 || i === 3;
                         return (
                             <motion.div
                                 key={i}
@@ -30,7 +30,7 @@ export const Services = () => {
                                 className={`${isDark ? 'bg-black text-[#d9ff00]' : 'bg-[#d9ff00] text-black'} p-8 md:p-12 rounded-[32px] h-64 md:h-80 flex flex-col justify-between border border-black/5 relative overflow-hidden`}
                             >
                                 <div className="space-y-4 relative z-10">
-                                    <h4 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none">
+                                    <h4 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-black uppercase tracking-tighter leading-none">
                                         {service.title}
                                     </h4>
                                     <div className="flex items-center gap-2">

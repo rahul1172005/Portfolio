@@ -6,15 +6,12 @@ import { BentoSquareGraph } from './bento-items/BentoSquareGraph'
 import { BentoTechStack } from './bento-items/BentoTechStack'
 import { BentoClients } from './bento-items/BentoClients'
 import { BentoWorkWithVibe } from './bento-items/BentoWorkWithVibe'
-import { BentoLogo } from './bento-items/BentoLogo'
-import { BentoLocation } from './bento-items/BentoLocation'
-import { BentoNextCohort } from './bento-items/BentoNextCohort'
 
 export function BentoGrid() {
     return (
         <section className="px-3 md:px-12 max-w-7xl mx-auto pt-16 pb-28 relative z-[100] overflow-hidden">
 
-            <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-4 gap-2 md:gap-6 h-auto md:h-[1000px] relative z-[200]">
+            <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-3 gap-2 md:gap-6 h-auto md:h-[750px] relative z-[200]">
 
                 {/* 1. TOP HERO */}
                 <div className="col-span-2 md:col-span-3 md:row-span-1">
@@ -41,20 +38,6 @@ export function BentoGrid() {
                     <BentoWorkWithVibe />
                 </div>
 
-                {/* 6. BOTTOM SQUARE LOGO */}
-                <div className="col-span-1 md:col-span-1 md:row-span-1">
-                    <BentoLogo />
-                </div>
-
-                {/* 7. BOTTOM SQUARE LOCATION */}
-                <div className="col-span-1 md:col-span-1 md:row-span-1">
-                    <BentoLocation />
-                </div>
-
-                {/* 8. FINAL CARD */}
-                <div className="col-span-2 md:col-span-2 md:row-span-1">
-                    <BentoNextCohort />
-                </div>
 
             </div>
         </section>
